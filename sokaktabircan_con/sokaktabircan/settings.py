@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import djongo
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6(wl-ntn0-dlnhq+8=jb^v%t&m2z0@(a5u)z!2mr1ni-&y)*6@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #Sayfanin gelistirme modunda oldugunu gosterir, yayına alinacagi zaman kapatilmalidir
 
 ALLOWED_HOSTS = []
 
@@ -31,12 +33,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #Django Uygulamaları
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pages.apps.PagesConfig',
+
+    #kendi uygulamalarım
+    'sokaktabircan',
+    'accounts',
+    #'orders',
+
+    #3. parti uygulamalar
+    'bootstrap4',
+    'crispy_forms',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +68,7 @@ ROOT_URLCONF = 'sokaktabircan.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,18 +82,28 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sokaktabircan.wsgi.application'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
+# User
+#AUTH_USER_MODEL = 'accounts.NormalUser'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'SokaktaBirCanDB',
+        #'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+                'host': '<host>',
+                'name': "SokaktaBirCanDB",
+                "authMechanism": "SCRAM-SHA-1" #For atlas cloud db
+
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -115,7 +139,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+#STATIC_URL = '/static/'
+#STATICFILES_DIRS =[os.path.join(BASE_DIR, "static/")]
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    '/static'
+)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
