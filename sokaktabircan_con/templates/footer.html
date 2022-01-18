@@ -1,0 +1,85 @@
+{% load static %}
+<footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-2">
+                <img src="{%static 'img/logo_catdog.png'%}">
+            </div>
+            <div class="col-10">
+                <ul>
+                    <li>
+                        <i class="fa fa-map-marker-alt"></i>
+                        <div>
+                            Sokakta Bir Can
+                            Gazi Üniversitesi
+                            Mühendislik Fakültesi
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone-alt"></i>
+                        <div>
+                            <span>Telefon:</span>
+                            0539 590 90 77
+                        </div>
+                    </li>
+                    <li>
+                        <i class="far fa-envelope"></i>
+                        <div>
+                            <span>E-Posta:</span>
+                            <a href="sezensude@gmail.com">sokaktabircan@gmail.com</a>
+                        </div>
+                    </li>
+                    <ul id="header-social">
+                        <li><a href="https://www.facebook.com/" class="face"><i class="fab fa-facebook-f"></i> </a></li>
+                        <li><a href="https://twitter.com/?lang=tr" class="twit"><i class="fab fa-twitter"></i> </a></li>
+                        <li class="d-none d-md-inline-flex"><a href="https://www.youtube.com/" class="youtube"><i class="fab fa-youtube"></i> </a></li>
+                        <li><a href="https://www.instagram.com/" class="instagram"><i class="fab fa-instagram"></i> </a></li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+<script>
+    $(function () {
+        $("#slider").owlCarousel({
+            items:1,
+            nav : true,
+            navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+            dots:false,
+            smartSpeed:450,
+            loop:true,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true,
+        });
+    })
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the header
+    var header = document.getElementById("header");
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+</script>
+</body>
+</html>

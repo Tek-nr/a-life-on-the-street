@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="shop_card">
+        <div class="row">
+            <div class="col-md-6 cart">
+                <div class="card p-3">
+                    <h2 class="text-uppercase" style="color: #2f2f2f; text-align: center;">Veteriner Detayları</h2>
+                    <div class="col-md-12 text-center ">
+                        <img class="img-fluid" src="{{veterinary_clinic.image.url}}">
+                    </div>
+                    <div class="col-md-12 info">
+                        <div class="row title" >
+                            <div class="col">
+                                <h2 style="margin-top: 1em"></h2>
+                            </div>
+                    
+                        </div>
+                        <div class="back-to-shop"><a href="{% url 'treatment_index' %}" class="fa fa-arrow-left"><span class="text-muted"> Geri Dön</span></a></div>                  
+
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-md-6 summary">
+                <div class="card  p-3 mb-3">
+                    <h2 class="text" style="color: #2f2f2f"><b>{{veterinary_clinic.name}}</b></h2>
+                    <h4 style="margin-top: 1em"><b>Veteriner Hekim: </b>{{veterinary_clinic.user.get_full_name}}</h4>
+                    <h4><b>Telefon: </b>+90 {{veterinary_clinic.phone_number}}</h4>
+                    <h4><b>Kumbara Oluşturulma Tarihi: </b></h4>
+                    <h6>{{veterinary_clinic.publishing_date}}</h6>
+                </div>
+                <a href="{% url 'post_index' %}"><button class="btn btn-block">KATKIDA BULUN</button></a>
+            </div>
+        </div>
+    </div>
+   <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'img/illustration/Veterinary-pana.svg' %}" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

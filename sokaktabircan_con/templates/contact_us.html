@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+    <div class="shop_card" >
+        <div class="row">
+            <div class="col-md-12 summary" style="border-top-left-radius: 1rem;border-bottom-left-radius: 1rem;" >
+                <div class="card">
+                    <div class="container contact-form">
+                        <div class="contact-image">
+                            <img src="{% static 'img/paper-plane.png'%}"/>
+                        </div>
+                        <form method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+                            <h3>Bize Mesaj Gönder</h3>
+                           <!-- <div class="row">-->
+                                    {% csrf_token %}
+                                    {{ form | crispy }}
+                                <input type="submit" value="GÖNDER" style="width: 100%" class="btn btn-block" data-toggle="modal" data-target="#contactUsModal">
+                               <!-- <div class="col-md-6">
+                                   <div class="form-group">
+                                        <input type="text" name="txtName" class="form-control" placeholder="Adın *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="txtEmail" class="form-control" placeholder="E-mail adresin *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="txtPhone" class="form-control" placeholder="Telefon numaran *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="btnSubmit" class="btnContact" value="Gönder" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea name="txtMsg" class="form-control" placeholder="Mesajın *" style="width: 100%; height: 150px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactUsModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <h4 class="col-12 text-center">Mesajınız Alındı!</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Bizimle iletişime geçtiğiniz için teşekkür ederiz :)</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-block" data-dismiss="modal">TAMAM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

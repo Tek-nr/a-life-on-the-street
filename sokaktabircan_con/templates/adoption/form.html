@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <div class="shop_card" >
+        <div class="row">
+            <div class="col-md-12 summary" style="border-top-left-radius: 1rem;border-bottom-left-radius: 1rem;" >
+                <div class="card">
+                    <h6 class="text-uppercase" style="color: #2f2f2f">SAHİPLENDİRME FORMU</h6>
+                    <!-- <div class="container rounded mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-4 border-dark border-right" style="border-color: white">
+                                <div class="d-flex flex-column align-items-center text-center ">
+                                    <img class="" width="250px" src="img/pexels-snapwire-46024.jpg">
+                                    <span class="font-weight-bold mt-3">ilan başlığı</span>
+                                </div>
+                            </div>
+                           <div class="col-md-8 ">
+                                <div class="row mt-3">
+                                    <div class="col-md-6"><label class="labels">Adı</label><input type="text" class="form-control" placeholder="adını giriniz" value=""></div>
+                                    <div class="col-md-6" ><label class="labels">Tür seçiniz</label>
+                                        <form style="padding:0" >
+                                            <select style="border: 1px solid rgba(0, 0, 0, 0.137);padding: 1.5vh 1vh; margin-bottom: 4vh;outline: none;width: 100%;">
+                                                <option class="text-muted">Köpek</option>
+                                                <option class="text-muted">Kedi</option>
+                                                <option class="text-muted">Kuş</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6"><label class="labels">Yaşı</label><input type="text" class="form-control" placeholder="yaşını giriniz" value=""></div>
+                                    <div class="col-md-6" ><label class="labels">Cinsiyeti</label>
+                                        <form style="padding:0" >
+                                            <select style="border: 1px solid rgba(0, 0, 0, 0.137);padding: 1.5vh 1vh; margin-bottom: 4vh;outline: none;width: 100%;">
+                                                <option class="text-muted">Dişi</option>
+                                                <option class="text-muted">Erkek</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-12"><label class="labels">Irkı</label><input type="text" class="form-control" placeholder="ırkını giriniz" value=""></div>
+                                    <div class="col-md-12"><label class="labels">İletişim Numarası</label><input type="text" class="form-control" placeholder="iletişim numarası giriniz" value=""></div>
+                                    <div class="col-md-12"><label class="labels">Şehir</label><input type="text" class="form-control" placeholder="Şehir adı giriniz" value=""></div>
+                                    <div class="col-md-12">
+                                        <form action="">
+                                            <label for="myfile">Fotoğraf seçiniz:</label>
+                                            <input type="file" id="myfile" name="myfile"><br><br>-->
+                                            <form method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {{ form | crispy }}
+                                            <input type="submit" class="btn" value="İLAN OLUŞTUR" style="width: 100%">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'img/illustration/adopt-a-pet-amico.svg'%}" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

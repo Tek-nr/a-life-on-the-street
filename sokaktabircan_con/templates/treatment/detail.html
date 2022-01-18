@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="shop_card">
+        <div class="row">
+            <div class="col-md-6 cart">
+                <div class="card p-3">
+                    <h2 class="text-uppercase" style="color: #2f2f2f; text-align: center;">Tedavi Detayları</h2>
+                    <div class="col-md-12 text-center ">
+                        <img class="img-fluid" src="{{treatment.image.url}}">
+                    </div>
+                    <div class="col-md-12 info">
+                        <div class="row title" >
+                            <div class="col">
+                                <h2 style="margin-top: 1em; text-align: center;">{{treatment.header}}</h2>
+                            </div>
+                        </div>
+                        <div class="back-to-shop"><a href="{% url 'treatment_index' %}" class="fa fa-arrow-left"><span class="text-muted"> Geri Dön</span></a></div>                  
+                    </div>
+                </div>  
+            </div>
+            <div class="col-md-6 summary">
+                <div class="card  p-3 mb-3">
+                    <h2 class="text" style="color: #2f2f2f">TEDAVİ İÇERİĞİ</h2>
+                    <p>{{treatment.clinic}}</p>
+                    <p style="margin-top: 1em"> {{treatment.content}} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h4>Tedavi Masrafı</h4>
+                    <h5>{{treatment.cost}} TL</h5>
+                </div>
+                <a href="/odeme"><button class="btn btn-block">KATKIDA BULUN</button></a>
+            </div>
+        </div>
+    </div>
+
+   <div class="container" >
+        <div class="row">
+                <img src="{% static 'img/illustration/Veterinary-pana.svg' %}" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

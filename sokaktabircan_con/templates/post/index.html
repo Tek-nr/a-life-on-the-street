@@ -1,0 +1,257 @@
+
+    {% extends 'base.html' %}
+    {% block content %}
+    {% load static %}
+    
+    <!-- TOP IMAGE PARALLAX SCROLİNG 
+
+    <div class="mb_parallax_container" id="top-image-bo">
+        <div class="fixed-img-bo" style="background-image: url('static/img/shop_banner.png');"></div>
+        <div class="top-text-bo">
+            <h1 class="breadcrumbs-text" style="text-align: center; color: white"> Mama </h1>
+        </div>
+
+    </div>-->
+
+
+    <div id="sliderArea">
+        <div id="slider" style="background-color: #ffb161">
+            <div class="item" id="slider1"></div>
+        </div>
+    </div>
+    <!-- TOP IMAGE PARALLAX SCROLİNG End -->
+
+    <!-- Topbar Start 
+    <div id="search_area" class="container-fluid" style="background-color: #fff;box-shadow: 0 3px 6px rgba(0, 0, 0,.15);">
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="ürün adı giriniz...">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-2 col-6 text-right">
+                <a href="/sepet" class="btn border" >
+                    <i class="fas fa-shopping-cart" style="color: #ff7b00"></i>
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>-->
+    <!-- Topbar End -->
+
+        <!-- Topbar Start -->
+        <div id="search_area" class="container-fluid" style="background-color: #fff;box-shadow: 0 3px 6px rgba(0, 0, 0,.15);">
+            <div class="row align-items-center py-3 px-xl-5">
+                <div class="col-lg-3 d-none d-lg-block">
+                </div>
+                <div class="col-lg-6 col-6 text-left">
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Ara" value="">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-transparent text-primary">
+                                    <input class="fa fa-search" type="submit">
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-2 col-6 text-right">
+                    <a href="/sepet" class="btn border" >
+                        <i class="fas fa-shopping-cart" style="color: #ff7b00" ></i>
+                            (<span class="badge total-count"></span>)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-12">
+                <!-- Price Start -->
+                <h3><a href="{% url 'post_index' %}">Seçimi Temizle</a></h3>
+                <div class="border-bottom mb-4 pb-4"><br><br>
+                    <h3>Markalar</h3>
+                       <!-- <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="price-all">
+                            <label class="custom-control-label" for="price-all">Tümünü Seç</label>
+
+                        </div>-->
+                        {% for brand in brands %}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <!--<input type="checkbox" class="custom-control-input" id="price-1">-->
+                            <a href="{{brand.get_absolute_url}}">{{brand.name}}</a>
+                        </div>
+                        {% endfor %}
+                </div>
+
+                <div class="border-bottom mb-4 pb-4"><br><br>
+                    <h3>Tür</h3>
+                        {% for breed in breeds %}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <!--<input type="checkbox" class="custom-control-input" id="price-1">-->
+                            <a href="{{breed.get_absolute_url}}">{{breed.name}}</a>
+                        </div>
+                        {% endfor %}
+                </div>
+
+                <div class="border-bottom mb-4 pb-4"><br><br>
+                    <h3>Mama Türü</h3>
+                       <!-- <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="price-all">
+                            <label class="custom-control-label" for="price-all">Tümünü Seç</label>
+
+                        </div>-->
+                        {% for food_type in food_types %}
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <!--<input type="checkbox" class="custom-control-input" id="price-1">-->
+                            <a href="{{food_type.get_absolute_url}}">{{food_type.name}}</a>
+                        </div>
+                        {% endfor %}
+                </div>
+                <!-- Brand End -->
+            </div>
+            <!-- Shop Sidebar End -->
+
+            <!-- Shop Product Start -->
+
+            <div class="rs-event col-lg-9 col-md-12">
+                <div class="container">
+                    <div class="row">
+
+
+                        {% for post in posts %} 
+                        <div class="col-lg-4 mb-60 col-md-6">
+                            <div class="event-item">
+                                <div class="event-short">
+                                    <div class="featured-img" style="position: relative">
+                                        <img src="{{post.image.url}}" class="img-responsive" alt="Image">
+                                    </div>
+                                    <div class="content-part">
+                                        <a class="title">{{post.header}}</a>
+                                        <div class="event-btm">
+                                            <div class="date-part">
+                                                <div class="date">
+                                                    {{post.price}} ₺
+                                                </div>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="{{post.get_add_to_cart_url}}" data-pic="{{post.image.url}}" data-name='{{post.header}}' data-price="{{post.price}}" class="add-to-cart" ><i class="fas fa-shopping-cart "></i> Sepete ekle</a>
+                                                <!--<a href="{{post.get_add_to_cart_url}}">Tıkla</a>
+                                                <a href="{{post.get_absolute_url}}">Tıkla</a>-->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                       <!-- <div class="col-lg-4 mb-60 col-md-6">
+                            <div class="event-item">
+                                <div class="event-short">
+                                    <div class="featured-img" style="position: relative">
+                                        <img src="{% static 'img/nd.png'%}" alt="Image">
+                                    </div>
+                                    <div class="content-part">
+                                        <a class="title">N&D+</a>
+                                        <div class="event-btm">
+                                            <div class="date-part">
+                                                <div class="date">
+                                                    250 TL
+                                                </div>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="#" data-pic="nd.png" data-name='N&D+' data-price="250" class="add-to-cart" ><i class="fas fa-shopping-cart "></i> Sepete ekle</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-60 col-md-6">
+                            <div class="event-item">
+                                <div class="event-short">
+                                    <div class="featured-img" style="position: relative">
+                                        <img src="{% static 'img/royalcaninyas.jpg'%} " alt="Image">
+                                    </div>
+                                    <div class="content-part">
+                                        <a class="title">Royal Canin+</a>
+                                        <div class="event-btm">
+                                            <div class="date-part">
+                                                <div class="date">
+                                                    20 TL
+                                                </div>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="#" data-pic="royalcaninyas.jpg" data-name='RoyalCanin+' data-price="20" class="add-to-cart" ><i class="fas fa-shopping-cart "></i> Sepete ekle</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-60 col-md-6">
+                            <div class="event-item">
+                                <div class="event-short">
+                                    <div class="featured-img" style="position: relative">
+                                        <img src="{% static 'img/reflex.png'%}" alt="Image">
+                                    </div>
+                                    <div class="content-part">
+                                        <a class="title">Reflex+</a>
+                                        <div class="event-btm">
+                                            <div class="date-part">
+                                                <div class="date">
+                                                    130 TL
+                                                </div>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="#" data-pic="reflex.png" data-name='Reflex+' data-price="130" class="add-to-cart" ><i class="fas fa-shopping-cart "></i> Sepete ekle</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        
+
+      
+                        <div class="col-12 pb-1">
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if posts.has_previous %}
+                                        <a href="?page={{ posts.previous_page_number }}&q={{request.GET.q}} "> Önceki Sayfa</a>
+                                    {% endif %}
+                            
+                                    <span class="current">
+                                        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                                    </span>
+                            
+                                    {% if posts.has_next %}
+                                        <a href="?page={{ posts.next_page_number }}&q={{request.GET.q}} "> Sonraki Sayfa</a>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+
+    {% endblock content %}

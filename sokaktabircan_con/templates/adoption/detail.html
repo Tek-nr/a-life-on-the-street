@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="shop_card">
+        <div class="row">
+            <div class="col-md-6 cart">
+                <div class="card p-3">
+                    <h2 class="text-uppercase" style="color: #2f2f2f; text-align: center;">{{adoption.header}}</h2>
+                    <div class="col-md-12 text-center ">
+                        <img src="{{adoption.image.url}}" class="img-fluid" alt="Image">
+                    </div>
+                    <div class="col-md-12 info">
+                        <div class="row title" >
+                            <div class="col">
+                                <div class="back-to-shop"><a href="{% url 'adoption_index' %}" class="fa fa-arrow-left"><span class="text-muted"> Geri Dön</span></a></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 summary">
+                <div class="card  p-3 mb-3">
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Adı</label><output type="text" class="form-control" >{{adoption.name}}</output></div>
+                        <div class="col-md-6"><label class="labels">Türü</label><output type="text" class="form-control">{{adoption.breed}}</output></div>
+                        <div class="col-md-6"><label class="labels">Yaşı</label><output type="text" class="form-control">{{adoption.age}}</output></div>
+                        <div class="col-md-6"><label class="labels">Cinsiyeti</label><output type="text" class="form-control">{{adoption.gender}}</output></div>
+                        <!--<div class="col-md-12"><label class="labels">Irkı</label><output type="text" class="form-control">Van kedisi</output></div>-->
+                        <div class="col-md-12"><label class="labels">Yayın Tarihi</label><output type="text" class="form-control" >{{adoption.publishing_date}}</output></div>
+                        <div class="col-md-12"><label class="labels">Sahiplendiren Kişi</label><a href="{{adoption.user.feedbank.get_absolute_url}}">
+                            <p class="form-control">{{adoption.user.get_full_name}}</p></a></div>
+                        <div class="col-md-12"><label class="labels">İletişim</label><p class="form-control">+90 {{adoption.phone_number}}</p></div>
+                    </div>
+                </div>
+                <!--<a href="/404"><button class="btn btn-block">SAHİPLEN</button></a>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'img/illustration/adopt-a-pet-amico.svg' %}" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

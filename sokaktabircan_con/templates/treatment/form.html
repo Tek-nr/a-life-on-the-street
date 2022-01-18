@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <div class="shop_card" >
+        <div class="row">
+            <div class="col-md-12 cart" style="border-top-right-radius: 1rem;border-bottom-right-radius: 1rem;" >
+                <div class="card">
+                    <h3 class="text-uppercase" style="color: #2f2f2f">{{title}}</h3>
+                    <div class="container rounded mt-5 mb-5">
+                        <!-- <div class="row">
+                            <div class="col-md-8 ">
+                               <div class="row mt-3">-->
+                                <form method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form | crispy }}
+                                    <input type="submit" class="btn" value="{{title}}" style="width: 100%">
+                                </form>
+                               <!-- </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'img/illustration/Veterinary-pana.svg'%}" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

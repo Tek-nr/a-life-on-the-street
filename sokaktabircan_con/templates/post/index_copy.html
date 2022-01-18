@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+
+    <h3>HOŞGELDİNİZ {{request.user}}</h3>
+    {% if not request.user.is_authenticated %}
+        <h4><a href="{% url 'register' %}">Kayıt Ol</a></h4>
+        <h4><a href="{% url 'login' %}">Giriş Yap</a></h4>
+
+    {% else %}
+        <h4><a href="{% url 'logout' %}">Çıkış</a></h4>
+    {%endif%}
+
+    {% for post in posts %} 
+
+    {# post/{{post.id}} #}
+    {# {% url 'post_detail' id=post.id %} #}    
+
+        {{post.id}}<br>
+        <a href ="{{post.get_absolute_url}}">{{post.header}}</a><br><br> {# url sayfasindaki name degiskenini dondurur#}
+        {{post.content}}<br>
+        {{post.publishing_date}}<br>
+        {{post.brand}}<br>
+        {{post.assortment}}<br>
+        {{post.price}}<br>
+        {{post.image}}<br><br>
+        <img src="{{post.image.url}}" class="img-responsive"><br><br> 
+
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+    
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+    {% endblock content %}

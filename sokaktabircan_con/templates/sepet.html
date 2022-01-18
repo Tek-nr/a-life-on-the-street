@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="shop_card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Alışveriş Sepeti</b></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="show-cart"></div>
+                
+                <div class="back-to-shop">
+                    <a href="{% url 'post_index' %}" class="fa fa-arrow-left col-8" style="padding: 1vh;"><span class="text-muted" style="font-family: 'Poppins', sans-serif"> Alışverişe geri dön</span></a>
+                    <button class="clear-cart btn col-4" style="width: 300px;margin-top: 0">SEPETİ TEMİZLE</button>
+                </div>
+            </div>
+            <div class="col-md-4 summary">
+                <div>
+                    <h5><b>Sipariş Özeti</b></h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col text-right">&#8378; <span class="total-cart"></span></div>
+                </div>
+                <form style="padding: 2vh 0">
+                    <p>Kargo</p>
+                    <select style="border: 1px solid rgba(0, 0, 0, 0.137);padding: 1.5vh 1vh; margin-bottom: 4vh;outline: none;width: 100%;background-color: rgb(247, 247, 247)">
+                    <option class="text-muted">Standart Teslimat &#8378;10.00</option>
+                </select>
+                    <p>İndirim Kodu</p> <input id="code" placeholder="Kodu giriniz">
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOPLAM TUTAR</div>
+                    <div class="col text-right">&#8378; <span class="total-kargo"></span></div>
+                </div>
+                <a href="/odeme"> <button class="btn btn-block" >ÖDEME</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'img/pet-hug.svg'%}" alt="" style="width:350px;height:350px;display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

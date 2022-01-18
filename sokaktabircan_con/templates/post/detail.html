@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+    <a href="{% url 'post_index' %}">GERİ</a><br><br>
+
+    {% if not request.user.is_authenticated %}
+        <h4><a href="{% url 'register' %}">Kayıt Ol</a></h4>
+        <h4><a href="{% url 'login' %}">Giriş Yap</a></h4>
+
+    {% else %}
+        <h4><a href="{% url 'logout' %}">Çıkış</a></h4>
+    {%endif%}
+
+        {{post.id}}<br>
+        {{post.header}}<br><br>
+        {{post.content}}<br>
+        {{post.publishing_date}}<br>
+        {{post.brand}}<br>
+        {{post.assortment}}<br>
+        {{post.price}}<br>
+        {{post.image}}<br>
+        <img src="{{post.image.url}}" class="img-responsive"><br><br> 
+
+        {% if request.user.is_staff %}
+                    <li><a href="{% url 'treatment_create' %}" >Yazı Ekle</a></li>
+                {% endif %}
+                <li><a href="{% url 'treatment_index' %}">Anasayfa</a></li>
+                <li><a href="{% url 'treatment_index' %}">Blog</a></li>
+                <li><a href="#">Hakkımda</a></li>
+                <li><a href="#">İletişim</a></li>
+
+        
+
+
+{% endblock content %}

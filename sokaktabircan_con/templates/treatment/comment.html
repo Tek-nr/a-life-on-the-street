@@ -1,0 +1,7 @@
+{% load crispy_forms_tags %}
+
+    <form method="POST" accept-charset="utf-8" enctype="multipart/form-data"> <!-- CSRF Saldirilarini onlemek icin CSRF token yerlestirecegiz -->
+        {% csrf_token %}
+        {{form | crispy }}
+    <input type="submit" value="Yorum Ekle" class="btn btn-primary">
+    </form>

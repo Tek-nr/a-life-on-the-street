@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset ="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <form method="POST" accept-charset="utf-8" enctype="multipart/form-data"> <!-- CSRF Saldirilarini onlemek icin CSRF token yerlestirecegiz -->
+        {% csrf_token %}
+    <h1>Hasta Ekle</h1>
+    {{form.as_p}}
+    <input type="submit" value="Gönder">
+    </form>
+
+</body>
+</html>

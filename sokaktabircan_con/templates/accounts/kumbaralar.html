@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- TOP IMAGE PARALLAX SCROLİNG 
+
+    <div class="mb_parallax_container" id="top-image-bo">
+        <div class="fixed-img-bo" style="background-image: url('img/shop_banner.png');"></div>
+        <div class="top-text-bo">
+            <h1 class="breadcrumbs-text" style="text-align: center; color: white"> Kumbaralar </h1>
+        </div>
+
+    </div>-->
+    <!-- TOP IMAGE PARALLAX SCROLİNG End -->
+
+    <div id="sliderArea">
+        <div id="slider" style="background-color: #ffb161">
+            <div class="item" id="slider3"></div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5" id="kumbara-cards">
+        <div class="row px-xl-5">
+
+            {% for feedbank in feedbanks %} 
+            {% if feedbank.user.is_staff %}
+            <div class="col-md-4 col-12  mb-4">
+                            <a href="{{feedbank.get_absolute_url}}" class="item">
+                                <img src="{{feedbank.image.url}}" class="img-responsive"></a>
+                                <h2 class="item-title">{{feedbank.feedbank_name}}</h2>
+                                <h3 class="item-title">{{feedbank.user.get_full_name}}</h3>
+                                <h3 class="item-title" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, adipisci?</h3>
+                                <h3 class="item-title">{{feedbank.publishing_date}}</h3>
+                            
+                        </div>
+                {%endif%}
+            {% endfor %}
+
+                  
+            <div class="col-12 pb-1">
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if feedbanks.has_previous %}
+                            <a href="?page={{ feedbanks.previous_page_number }}">Önceki Sayfa</a>
+                        {% endif %}
+                
+                        <span class="current">
+                            Page {{ feedbanks.number }} of {{ feedbanks.paginator.num_pages }}.
+                        </span>
+                        {% if feedbanks.has_next %}
+                            <a href="?page={{ feedbanks.next_page_number }}">Sonraki Sayfa</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            
+    </div>
+
+    {% endblock content %}
