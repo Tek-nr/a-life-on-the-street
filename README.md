@@ -34,11 +34,16 @@ To run the A Life on the Street web application locally, follow these steps:
 ## Features
 The A Life on the Street web application offers the following key features:
 
-**User registration and authentication:** Users can create accounts, log in, and manage their profiles. <br>
-**Stray animal listing:** Animal shelters can add information about stray animals, including their descriptions, photos, and status. <br>
-**Adoption platform:** Users can browse and search for animals available for adoption, express interest, and contact the respective shelters. <br>
-**Volunteer coordination:** The application provides a platform for volunteers to offer assistance and coordinate rescue efforts. <br>
-**Community engagement:** Users can participate in discussions, share experiences, and raise awareness about stray animals. <br>
+**User registration and authentication:** <br>
+Users can create accounts, log in, and manage their profiles. <br> <br>
+**Stray animal listing:** <br>
+Animal shelters can add information about stray animals, including their descriptions, photos, and status. <br><br>
+**Adoption platform:** <br>
+Users can browse and search for animals available for adoption, express interest, and contact the respective shelters. <br><br>
+**Volunteer coordination:** <br>
+The application provides a platform for volunteers to offer assistance and coordinate rescue efforts. <br><br>
+**Community engagement:** <br>
+Users can participate in discussions, share experiences, and raise awareness about stray animals. <br><br>
 
 ## Contributing
 Contributions to the A Life on the Street project are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
